@@ -1,12 +1,11 @@
 export type Video = {
   url: string
-  type: 'video'
-  defaultImageUrl: string
+  type: string
 }
 
 export type Image = {
   url: string
-  type: 'image'
+  type: string
 }
 
 export type Media = Video | Image
