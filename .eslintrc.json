@@ -1,0 +1,16 @@
+{
+  "extends": [
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier",
+    "plugin:jsx-a11y/recommended",
+    "plugin:i18next/recommended"
+  ],
+  "plugins": ["prettier", "jsx-a11y", "i18next", "jest"],
+  "rules": {
+    "react/react-in-jsx-scope": "off",
+    "react/no-unescaped-entities": "off",
+    "i18next/no-literal-string": "off"
+  }
+}
