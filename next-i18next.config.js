@@ -3,6 +3,6 @@ module.exports = {
   i18n: {
     defaultLocale: 'en',
     locales: ['en', 'fr'],
-    debug: process.env.NODE_ENV !== 'production',
   },
+  debug: process.env.NODE_ENV !== 'production',
 }

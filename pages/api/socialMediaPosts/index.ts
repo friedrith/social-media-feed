@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { sampleSocialMediaPostsData } from 'utils/sample-data'
+import { sampleSocialMediaPostsData } from 'pages/api/socialMediaPosts/sample-data'
 
 const handler = async (_req: NextApiRequest, res: NextApiResponse) => {
   try {

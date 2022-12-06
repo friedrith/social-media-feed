@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import User from 'interfaces/User'
+import User, { UserAuth } from 'interfaces/User'
 import type { AppState, AppThunk } from 'services/store'
 import { persistUser, loadUser } from './userLocalStorage'
+import * as userApi from './userApi'
 
 export interface UsersState {
   currentUser: null | User
@@ -12,10 +13,6 @@ const initialState: UsersState = {
   currentUser: null,
 }
 
-type LoginProps = {
-  email: string
-}
-
 // The function below is called a thunk and allows us to perform async logic. It
 // can be dispatched like a regular action: `dispatch(incrementAsync(10))`. This
 // will call the thunk with the `dispatch` function as the first argument. Async
@@ -23,12 +20,8 @@ type LoginProps = {
 // typically used to make async requests.
 export const login = createAsyncThunk(
   'user/login',
-  async ({ email }: LoginProps) => {
-    // const response = await fetchCount(amount)
-    // // The value we return becomes the `fulfilled` action payload
-    // return response.data
-
-    const user = { id: 'foo', email }
+  async ({ email, password }: UserAuth) => {
+    const user = await userApi.login({ email, password })
     persistUser(user)
     return user
   }

@@ -4,3 +4,8 @@ type User = {
 }
 
 export default User
+
+export type UserAuth = {
+  email: string
+  password: string
+}

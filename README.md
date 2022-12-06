@@ -27,7 +27,8 @@ This repository is based on:
 
 Some features are missing to have a complete user experience
 
-- persisting session so the user is not required to log at each hard refresh
+- persisting session so the user is not required to log at each hard refresh (conflicts with next.js)
+- improve test coverage: only few tests have been written to show the capabilities
 
 ## Contributing
 

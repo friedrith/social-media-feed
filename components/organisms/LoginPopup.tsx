@@ -18,7 +18,7 @@ const LoginPopup = () => {
   const [password, setPassword] = useState('')
 
   const startLogin = () => {
-    dispatch(login({ email }))
+    dispatch(login({ email, password }))
   }
 
   const submitDisabled = !email || !password
