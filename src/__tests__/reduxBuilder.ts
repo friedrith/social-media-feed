@@ -8,6 +8,17 @@ class ReduxBuilder {
     },
   }
 
+  withArchivedPosts(posts: string[]) {
+    this.state = {
+      ...this.state,
+      posts: {
+        archived: posts,
+      },
+    }
+
+    return this
+  }
+
   withCurrentUser(currentUser: User | null) {
     this.state = {
       ...this.state,

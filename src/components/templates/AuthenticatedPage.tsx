@@ -11,7 +11,7 @@ const AuthenticatedPage = ({ children }: Props) => {
   return (
     <>
       {children}
-      {!currentUser && <LoginPopup />}
+      <LoginPopup open={!Boolean(currentUser)} />
     </>
   )
 }

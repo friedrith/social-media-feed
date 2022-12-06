@@ -1,5 +1,5 @@
-import { Dialog, Transition } from '@headlessui/react'
-import { useTranslation, UseTranslation } from 'next-i18next'
+import { Dialog } from '@headlessui/react'
+import { useTranslation } from 'next-i18next'
 import { useState } from 'react'
 import classNames from 'classnames'
 
@@ -10,7 +10,11 @@ import Input from 'components/atoms/Input'
 import Label from 'components/atoms/Label'
 import Form from 'components/atoms/Form'
 
-const LoginPopup = () => {
+type Props = {
+  open: boolean
+}
+
+const LoginPopup = ({ open }: Props) => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
 
@@ -19,12 +23,17 @@ const LoginPopup = () => {
 
   const startLogin = () => {
     dispatch(login({ email, password }))
+
+    setTimeout(() => {
+      setEmail('')
+      setPassword('')
+    }, 1000)
   }
 
   const submitDisabled = !email || !password
 
   return (
-    <Modal open onClose={() => {}}>
+    <Modal open={open} onClose={() => {}}>
       <div className="mt-3 text-center sm:mt-5">
         <Dialog.Title
           as="h3"
@@ -36,20 +45,21 @@ const LoginPopup = () => {
           <div className="mt-8 text-left">
             <div className="grid gap-4">
               <div>
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t('Email')}</Label>
                 <Input.Email
                   id="email"
                   value={email}
                   onChange={setEmail}
-                  placeholder="john.wick@gmail.com"
+                  placeholder={t('Email')}
                 />
               </div>
               <div>
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t('Password')}</Label>
                 <Input.Password
                   id="password"
                   value={password}
                   onChange={setPassword}
+                  placeholder={t('Password')}
                 />
               </div>
             </div>

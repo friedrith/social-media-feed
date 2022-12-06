@@ -7,7 +7,6 @@ import MaxWidth from 'components/templates/MaxWidth'
 import usePosts from 'features/posts/usePosts'
 import useCurrentUser from 'features/users/useCurrentUser'
 import AuthenticatedPage from 'components/templates/AuthenticatedPage'
-import PostListContainer from 'features/posts/PostListContainer'
 import Header from 'components/organisms/Header'
 
 import PostList from 'features/posts/PostList'
@@ -28,9 +27,9 @@ const IndexPage = () => {
       <Layout title={t('Social Media Feed')}>
         <Header onForceRefresh={() => refresh()} />
         <MaxWidth>
-          <PostListContainer>
+          <div className="flex flex-col space-y-14 sm:space-y-10 py-10">
             {currentUser ? <PostList /> : <PostSkeletons />}
-          </PostListContainer>
+          </div>
         </MaxWidth>
       </Layout>
     </AuthenticatedPage>

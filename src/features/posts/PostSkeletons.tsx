@@ -1,9 +1,11 @@
-import TimeAgo from 'react-timeago'
+import cx from 'classnames'
 
-import SocialMediaPost from 'interfaces/SocialMediaPost'
-import Media from 'components/molecules/Media'
 import PostLayout from './PostLayout'
-import PostListContainer from './PostListContainer'
+
+/** we can add small react component to hide the complexity from the rest of the app */
+const LineSkeleton = ({ className }: { className: string }) => (
+  <div className={cx('bg-gray-200 rounded-full dark:bg-gray-700', className)} />
+)
 
 // https://tailwindui.com/components/application-ui/layout/media-objects#component-d4761775d88a3e2127cd14e89431c257
 const PostSkeletons = () => {
@@ -12,23 +14,17 @@ const PostSkeletons = () => {
       {new Array(4).fill(4).map((s, index) => (
         <PostLayout
           key={index}
-          title={
-            <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-48 mb-4"></div>
-          }
+          title={<LineSkeleton className="h-2.5 w-48 mb-4" />}
           body={
             <>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[480px] mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[440px] mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[460px] mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-700 max-w-[360px]"></div>
+              <LineSkeleton className="h-2 max-w-[480px] mb-2.5" />
+              <LineSkeleton className="h-2 mb-2.5" />
+              <LineSkeleton className="h-2 max-w-[440px] mb-2.5" />
+              <LineSkeleton className="h-2 max-w-[460px] mb-2.5" />
+              <LineSkeleton className="h-2max-w-[360px]" />
             </>
           }
-          createdDate={
-            <>
-              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-700 w-24 mb-4"></div>
-            </>
-          }
+          createdDate={<LineSkeleton className="h-2.5 w-24 mb-4" />}
           media={
             <div className="flex justify-center items-center  bg-gray-300 rounded dark:bg-gray-700 h-48 sm:h-32 w-full sm:w-48 rounded">
               <svg
