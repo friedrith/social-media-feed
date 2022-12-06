@@ -1,9 +1,13 @@
 import TimeAgo from 'react-timeago'
-
+import { useTranslation } from 'next-i18next'
+import { ArchiveBoxArrowDownIcon } from '@heroicons/react/20/solid'
 import SocialMediaPost from 'interfaces/SocialMediaPost'
 import Media from 'components/molecules/Media'
 import SocialIcon from 'components/atoms/SocialIcon'
 import PostLayout from './PostLayout'
+import IconButton from 'components/atoms/IconButton'
+import { useAppDispatch } from 'hooks/redux'
+import { archivePost } from './posts.slice'
 
 type Props = {
   post: SocialMediaPost
@@ -11,10 +15,24 @@ type Props = {
 
 // https://tailwindui.com/components/application-ui/layout/media-objects#component-d4761775d88a3e2127cd14e89431c257
 const Post = ({ post }: Props) => {
+  const { t } = useTranslation()
+  const dispatch = useAppDispatch()
   return (
     <PostLayout
       title={post.title}
-      body={post.body}
+      body={
+        <>
+          <div>{post.body}</div>
+          <div className="flex justify-end">
+            <IconButton
+              aria-label={t('Archive')}
+              onClick={() => dispatch(archivePost(post))}
+            >
+              <ArchiveBoxArrowDownIcon className="h-5 w-5" />
+            </IconButton>
+          </div>
+        </>
+      }
       createdDate={<TimeAgo date={post.createdDate} />}
       media={
         post.media.length > 0 ? (

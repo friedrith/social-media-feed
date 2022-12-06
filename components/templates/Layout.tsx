@@ -3,7 +3,6 @@ import Head from 'next/head'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 import Footer from 'components/organisms/Footer'
-import Header from 'components/organisms/Header'
 
 type Props = {
   children?: React.ReactNode
@@ -17,7 +16,6 @@ const Layout = ({ children, title = 'This is the default title' }: Props) => (
       <meta charSet="utf-8" />
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <Header />
     {children}
     <Footer />
   </div>

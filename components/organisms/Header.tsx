@@ -11,7 +11,11 @@ import useCurrentUser from 'features/users/useCurrentUser'
 import { useAppDispatch } from 'hooks/redux'
 import { logout } from 'features/users/users.slice'
 
-const Header = () => {
+type Props = {
+  onForceRefresh: () => void
+}
+
+const Header = ({ onForceRefresh }: Props) => {
   const { t } = useTranslation()
 
   const currentUser = useCurrentUser()
@@ -27,7 +31,11 @@ const Header = () => {
               {t('Framestore social feed')}
             </h1>
             {currentUser && (
-              <IconButton aria-label={t('Log out')} className="mr-2">
+              <IconButton
+                aria-label={t('Refresh')}
+                className="mr-2"
+                onClick={onForceRefresh}
+              >
                 <ArrowPathIcon className="h-5 w-5" />
               </IconButton>
             )}

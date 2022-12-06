@@ -1,11 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
 import usersReducer from 'features/users/users.slice'
+import postsReducer from 'features/posts/posts.slice'
 
 /* @see https://github.com/vercel/next.js/tree/canary/examples/with-redux */
 export function makeStore() {
   return configureStore({
-    reducer: { users: usersReducer },
+    reducer: { users: usersReducer, posts: postsReducer },
   })
 }
 

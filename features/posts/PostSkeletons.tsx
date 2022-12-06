@@ -8,7 +8,7 @@ import PostListContainer from './PostListContainer'
 // https://tailwindui.com/components/application-ui/layout/media-objects#component-d4761775d88a3e2127cd14e89431c257
 const PostSkeletons = () => {
   return (
-    <PostListContainer>
+    <>
       {new Array(4).fill(4).map((s, index) => (
         <PostLayout
           key={index}
@@ -44,7 +44,7 @@ const PostSkeletons = () => {
           }
         />
       ))}
-    </PostListContainer>
+    </>
   )
 }
 

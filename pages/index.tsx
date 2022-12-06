@@ -7,6 +7,8 @@ import MaxWidth from 'components/templates/MaxWidth'
 import usePosts from 'features/posts/usePosts'
 import useCurrentUser from 'features/users/useCurrentUser'
 import AuthenticatedPage from 'components/templates/AuthenticatedPage'
+import PostListContainer from 'features/posts/PostListContainer'
+import Header from 'components/organisms/Header'
 
 import PostList from 'features/posts/PostList'
 import PostSkeletons from 'features/posts/PostSkeletons'
@@ -15,7 +17,7 @@ import { useAppDispatch } from 'hooks/redux'
 const IndexPage = () => {
   const { t } = useTranslation()
 
-  const { posts, isLoading, isError } = usePosts()
+  const { posts, isLoading, isError, refresh } = usePosts()
 
   const currentUser = useCurrentUser()
 
@@ -24,7 +26,12 @@ const IndexPage = () => {
   return (
     <AuthenticatedPage>
       <Layout title={t('Social Media Feed')}>
-        <MaxWidth>{currentUser ? <PostList /> : <PostSkeletons />}</MaxWidth>
+        <Header onForceRefresh={() => refresh()} />
+        <MaxWidth>
+          <PostListContainer>
+            {currentUser ? <PostList /> : <PostSkeletons />}
+          </PostListContainer>
+        </MaxWidth>
       </Layout>
     </AuthenticatedPage>
   )

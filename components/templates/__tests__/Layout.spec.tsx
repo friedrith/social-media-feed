@@ -43,9 +43,9 @@ describe('Layout', () => {
     expect(queryByTestId('children')).toBeInTheDocument()
   })
 
-  it('should render a header', () => {
-    const { queryByText } = setupTest(<Layout />)
+  it('should render a footer', () => {
+    const { queryByText, debug } = setupTest(<Layout />)
 
-    expect(queryByText(`Framestore social feed`)).toBeInTheDocument()
+    expect(queryByText(`© All rights reserved`)).toBeInTheDocument()
   })
 })
