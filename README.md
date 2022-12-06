@@ -25,7 +25,7 @@ This repository is based on:
 
 ## Roadmap
 
-Some features are missing to have a complete user experience
+Some features are missing to have a complete user experience and a stable project:
 
 - persisting session so the user is not required to log at each hard refresh (conflicts with next.js)
 - improve test coverage: only few tests have been written to show the capabilities
