@@ -13,10 +13,10 @@
     "format": "prettier --check .",
     "test": "jest --watch",
     "test:ci": "jest --ci",
-    "commitlint": "commitlint --from f330a95fa15d6f8fd8a5fa3eb836c60c139cc9ec"
+    "commitlint": "commitlint --from 51e5d787aa0ee8fedff0e7c920fae8b095bccc62"
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn lint && yarn format && yarn test:ci && yarn build"
+    "pre-commit": "yarn lint && yarn format && yarn test:ci && yarn commitlint && yarn build"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.4",
